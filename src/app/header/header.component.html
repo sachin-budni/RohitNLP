@@ -9,10 +9,10 @@
         <!-- <div fxFlex></div> -->
         <div fxLayout="column" fxLayoutAlign="center end">
             <div class="nav-bar" fxLayout="row" fxLayoutAlign="center center" fxHide.sm="true" fxHide.xs="true">
-                <button [routerLink]="['']">home</button>
-                <button [routerLink]="['aboutus']">about</button>
+                <button [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">home</button>
+                <button [routerLink]="['aboutus']" routerLinkActive="active">about</button>
                 <button >galleries</button>
-                <button [routerLink]="['contact']">contact</button>
+                <button [routerLink]="['contact']" routerLinkActive="active">contact</button>
                 <button>map</button>
             </div>
             <div  fxShow.sm="true" fxShow.xs="true" fxHide>
@@ -20,10 +20,10 @@
                     <mat-icon class="menu-button">menu</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Home</button>
-                    <button mat-menu-item>About</button>
+                    <button mat-menu-item [routerLink]="['']" routerLinkActive="active">Home</button>
+                    <button mat-menu-item [routerLink]="['aboutus']" routerLinkActive="active">About</button>
                     <button mat-menu-item>galleries</button>
-                    <button mat-menu-item>contact</button>
+                    <button mat-menu-item [routerLink]="['contact']" routerLinkActive="active">contact</button>
                     <button mat-menu-item>map</button>
                 </mat-menu>
             </div>
