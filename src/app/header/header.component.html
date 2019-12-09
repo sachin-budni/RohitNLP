@@ -1,0 +1,44 @@
+<div class="main-header">
+    <div class="header-size" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="logo" fxLayout="column" fxLayoutAlign="center end">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <img src="assets/camera.jpg" alt="">
+                <p>Rohit.NLP</p>
+            </div>
+        </div>
+        <!-- <div fxFlex></div> -->
+        <div fxLayout="column" fxLayoutAlign="center end">
+            <div class="nav-bar" fxLayout="row" fxLayoutAlign="center center" fxHide.sm="true" fxHide.xs="true">
+                <button [routerLink]="['']">home</button>
+                <button [routerLink]="['aboutus']">about</button>
+                <button >galleries</button>
+                <button [routerLink]="['contact']">contact</button>
+                <button>map</button>
+            </div>
+            <div  fxShow.sm="true" fxShow.xs="true" fxHide>
+                <button mat-icon-button aria-label="Example icon-button with a heart icon"  [matMenuTriggerFor]="menu">
+                    <mat-icon class="menu-button">menu</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Home</button>
+                    <button mat-menu-item>About</button>
+                    <button mat-menu-item>galleries</button>
+                    <button mat-menu-item>contact</button>
+                    <button mat-menu-item>map</button>
+                </mat-menu>
+            </div>
+            <div class="extra-padding-10"></div>
+            <div class="social-icons">
+                <a href="#">
+                    <img src="assets/facebook.webp" alt="facebook">
+                </a>
+                <a href="#">
+                    <img src="assets/insta.webp" alt="facebook">
+                </a>
+            </div>
+            <div class="email">
+                sachinbudnibnt@gmail.com
+            </div>
+        </div>
+    </div>
+</div>

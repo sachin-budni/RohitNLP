@@ -1,0 +1,32 @@
+.main-about{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0% auto;
+}
+
+.header{
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    p{
+        text-align: center;
+    }
+    width: 100%;
+}
+
+.desc-text{
+    font-size: 20px;
+    p{
+        margin: 0;
+        line-height: 30px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .content{
+        font-family: "Courier New", Courier, monospace;
+    }
+    li{
+        line-height: 40px;
+        font-family: "Courier New", Courier, monospace;
+    }
+}

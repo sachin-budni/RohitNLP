@@ -1,0 +1,24 @@
+<div fxLayout="column" class="main-about">
+    <div class="header">
+        <p>About</p>
+    </div>
+
+    <div class="desc" fxLayout="row" fxLayoutGap="20px">
+        <div class="desc-image">
+            <img src="https://static.wixstatic.com/media/bf9015_046b479f5b8f478892375957a5d6a577.jpg/v1/fill/w_170,h_236,al_c,lg_1,q_80/bf9015_046b479f5b8f478892375957a5d6a577.webp" alt="">
+        </div>
+        <div class="desc-text">
+            <p>
+                Originally from Berkeley, California Keith graduated college from the University of California at Santa Barbara. After graduating from UCSB, he attended Brooks Institute of Photography where he graduated with an emphasis in illustration/advertising. He moved to Los Angeles to pursue his career after Brooks, and wound up working in the advertising side of the business with both models and room scenes. In 1992, looking to further his career, Keith moved with his soon to be wife to Dallas, Texas and began working in advertising photography. He currently runs a successful photography studio where the focus is primarily on bedding, furniture, and product photography. His 30,500 square foot studio located in Dallas allows him to provide not only photography and digital retouching, but set building, as well. With a client base from Los Angeles to New York, his style has attracted such clients as: Behr Paint, Magnolia Home, Neiman Marcus, Horchow, and JCPenney. Aside from his time spent shooting, Keith enjoys golfing and spending time with his wife and three children. He also enjoys woodworking and home improvement projects which were an asset when it came time to building sets at his new studio. Keith strives for a creative execution of all his shoots, and uses a professional approach to meet his client’s needs. His willingness to travel has allowed him to shoot at locations that bring inspiration to the work he pursues in the studio. “I always try and re-create the natural look of daylight when working in the studio.”
+            </p>
+            <div class="extra-padding-10"></div>
+            <div class="content">
+                The Studio:
+                <ul>
+                    <li *ngFor="let set of sets">{{set}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

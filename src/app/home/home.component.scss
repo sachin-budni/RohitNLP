@@ -1,0 +1,85 @@
+.main-home{
+    max-width: 1000px;
+    width: 100%;
+    margin: 0% auto;
+}
+h1,p{
+    // font-family: marzo-w00-regular,fantasy;
+    font:normal normal normal 26px/1.4em Basic,sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.home-header{
+    text-transform: uppercase;
+    p{
+        font-size: 20px;
+        margin: 0px;
+        padding-bottom: 1em;
+        text-align: center;
+    }
+    h1{
+        font-size: 40px;
+        text-align: center;
+    }
+    span{
+        font-family: 'Open Sans', sans-serif;
+        text-transform: none;
+        font-size: 20px;
+        padding: 0px 10px;
+    }
+    span::first-letter{
+        font-size: 50px;
+    }
+}
+
+.main-card{
+    width: 100%;
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .card{
+            padding:10px;
+            position: relative;
+
+            .details{
+                position: absolute;
+                opacity: 0;
+                z-index: 2;
+                color: whitesmoke;
+                transition: 0.5s;
+                bottom: 0;
+                left: 0;
+                background: #0200009e;
+                width: calc(100% - 20px);
+                height: 150px;
+                margin: 10px 0px 10px 10px;
+                box-shadow: 0px -5px 30px rgba(0, 0, 0,1);
+
+                h4{
+                    // font-family: "Poppins", sans-serif;
+                    // font-family: 'Poppins', sans-serif;
+                    font-family: 'Open Sans', sans-serif;
+                    // font-family: marzo-w00-regular,fantasy;
+                    font-size: 18px;
+                    text-align: center;
+                }
+            }
+        }
+        .card:hover .details{
+            opacity: 1;
+        }
+        img{
+            width: 100%;
+            max-width: 300px;
+            object-fit: cover;
+            max-height: 300px;
+            box-shadow: 5px 5px 10px rgba(150, 160, 160, 0.6);
+        }
+        img:hover{
+            opacity: 0.8;
+            box-shadow: 10px 10px 10px rgba(150, 160, 160, 0.8);
+        }
+
+    }
+}
