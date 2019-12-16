@@ -83,3 +83,48 @@ h1,p{
 
     }
 }
+
+.main-div{
+    max-width: 1000px;
+    width: 100%;
+    margin: 0% auto;
+    .header{
+        max-width: 700px;
+        padding-top: 50px;
+        width: 100%;
+        margin: 0% auto;
+        img{
+            width: 100%;
+        }
+    }
+}
+.first-block{
+    width: 100%;
+    position: relative;
+    .img-first{
+        width: 100%;
+        img{
+            width: 65vw;
+            opacity: 0.3;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    .text-first{
+        width: 60%;
+        padding: 15% 0% 22% 40%;
+        max-width: 1000px;
+        z-index: 2;
+        p{
+            padding-left: 70px;
+        }
+        .blur-text{
+            color: #616161;
+            font-size: 100px;
+            font-weight: bolder;
+        }
+        .head{
+            vertical-align: middle;
+        }
+    }
+}

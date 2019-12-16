@@ -1,4 +1,7 @@
 <div class="main-header">
+    <!-- <div class="background-img-nav-bar">
+        <img src="assets/header_bar.svg" alt="">
+    </div> -->
     <div class="header-size" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="logo" fxLayout="column" fxLayoutAlign="center end">
             <div fxLayout="row" fxLayoutAlign="center center">
@@ -11,16 +14,28 @@
             <div class="nav-bar" fxLayout="row" fxLayoutAlign="center center" fxHide.sm="true" fxHide.xs="true">
                 <button [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">home</button>
                 <button [routerLink]="['aboutus']" routerLinkActive="active">about</button>
-                <button >galleries</button>
+                <button [matMenuTriggerFor]="menu1" class="gallaries">
+                    <div class="gallary-button">
+                        <span>
+                            galleries 
+                        </span>
+                        <mat-icon>
+                            expand_more
+                        </mat-icon>
+                    </div>
+                </button>
                 <button [routerLink]="['contact']" routerLinkActive="active">contact</button>
                 <button>map</button>
             </div>
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item *ngFor="let route of routesNames" [routerLink]="['gallery',route.path]">{{route.name}}</button>
+            </mat-menu>
             <div  fxShow.sm="true" fxShow.xs="true" fxHide>
                 <button mat-icon-button aria-label="Example icon-button with a heart icon"  [matMenuTriggerFor]="menu">
                     <mat-icon class="menu-button">menu</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item [routerLink]="['']" routerLinkActive="active">Home</button>
+                    <button mat-menu-item [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</button>
                     <button mat-menu-item [routerLink]="['aboutus']" routerLinkActive="active">About</button>
                     <button mat-menu-item>galleries</button>
                     <button mat-menu-item [routerLink]="['contact']" routerLinkActive="active">contact</button>
@@ -42,3 +57,4 @@
         </div>
     </div>
 </div>
+

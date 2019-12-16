@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(data:Contact){
+  onSubmit(data:Contact){
     console.log(data)
   }
 

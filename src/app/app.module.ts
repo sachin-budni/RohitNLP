@@ -12,7 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoMaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { GallaryComponent } from './gallary/gallary.component';
+import { GallaryService } from './services/gallary.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    GallaryComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DemoMaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GallaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
