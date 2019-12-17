@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { NguCarouselConfig, NguCarousel } from '@ngu/carousel';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+
+  @ViewChild("myCarousel",{static:false}) myCarousel:NguCarousel<any>;
 
   images = [
     // "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80",
@@ -35,9 +39,24 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private cdr:ChangeDetectorRef) {
+  }
 
+  data:any;
   ngOnInit() {
+    this.data = this.images;
+    this.cdr.detectChanges();
+  }
+
+
+
+  carouselConfig: NguCarouselConfig = {
+    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    // load: this.reviewData.length,
+    interval: {timing: 4000, initialDelay: 1000},
+    loop: true,
+    touch: true,
+    velocity: 0.2
   }
 
 }

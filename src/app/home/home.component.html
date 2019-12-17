@@ -1,4 +1,4 @@
-<div class="main-home">
+<!-- <div class="main-home">
     <div fxLayout="column" fxLayoutAlign="space-between center" class="home-header">
         <h1>Dallas Commercial Photo Studio</h1>
         <p>
@@ -22,10 +22,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
-<!-- <div class="main-div">
+<div class="main-div">
     <div class="header" fxLayout="column" fxLayoutAlign="center center">
         <img src="assets/Layer.svg" alt="">
         <h1>
@@ -37,18 +37,91 @@
         </p>
     </div>
 </div>
-<div class="padding-10"></div>
-<div class="first-block">
-    <div class="img-first">
-        <img src="assets/photo_1.svg" alt="">
+
+
+<div class="padding-20-0"></div>
+
+<div class="blocks">
+    <div class="first-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column">
+        <div class="img-first" >
+            <img class="side-img" src="assets/photo_1.svg" alt="">
+        </div>
+        <div class="text-first" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h1 class="head">
+                <span class="blur-text">01.</span>
+                NEETA SHANKAR PHOTOGRAPHY PRIVATE LIMITED
+            </h1>
+            <p>
+                A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
+            </p>
+        </div>
     </div>
-    <div class="text-first">
-        <h1 class="head">
-            <span class="blur-text">01.</span>
-            NEETA SHANKAR PHOTOGRAPHY PRIVATE LIMITED
-        </h1>
-        <p>
-            A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
-        </p>
+
+    <div class="padding-20-0"></div>
+
+    
+    <div class="second-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column-reverse" fxLayout.xs="column-reverse">
+        <div class="text-second" fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h1 class="head">
+                <span class="blur-text">02.</span>
+                NEETA SHANKAR PHOTOGRAPHY PRIVATE LIMITED
+            </h1>
+            <p>
+                A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
+            </p>
+        </div>
+        <div class="img-second">
+            <img class="side-img" src="assets/camera.svg" alt="">
+        </div>
     </div>
-</div> -->
+
+    <div class="padding-20-0"></div>
+
+    <div class="first-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column">
+        <div class="img-first" >
+            <img class="side-img" src="assets/selfi.svg" alt="">
+        </div>
+        <div class="text-first" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h1 class="head">
+                <span class="blur-text">01.</span>
+                NEETA SHANKAR PHOTOGRAPHY PRIVATE LIMITED
+            </h1>
+            <p>
+                A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div class="padding-20-0"></div>
+
+<div class="content-center">
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+        <h1>Galleries</h1>
+        <div class="main-card">
+            <div class="cards">
+                <div *ngFor="let image of images" class="card">
+                    <img [src]="image.img" alt="">
+                    <div class="details">
+                        <h4>{{image.name}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
+    <div *nguCarouselDef="let item;" class="item">
+      <div class="sub1-main5" style="min-height: 300px">
+        <img [src]="item.img" alt="">
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+    <button NguCarouselNext class="rightRs">></button>
+    <button NguCarouselPrev class="leftRs"><</button>
+    <ul class="myPoint" NguCarouselPoint>
+        <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
+    </ul>
+  </ngu-carousel>

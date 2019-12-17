@@ -14,6 +14,8 @@ import { DemoMaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GallaryComponent } from './gallary/gallary.component';
 import { GallaryService } from './services/gallary.service';
+import { NguCarouselModule } from '@ngu/carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { GallaryService } from './services/gallary.service';
     BrowserAnimationsModule,
     FlexLayoutModule,
     DemoMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NguCarouselModule
   ],
   providers: [GallaryService],
   bootstrap: [AppComponent]
