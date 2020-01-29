@@ -94,6 +94,22 @@
 
 </div>
 
+<div style="padding: 40px;"></div>
+<div class="carousel-main">
+    <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
+        <div *nguCarouselDef="let item;" class="item">
+          <div class="sub1-main5" style="max-height: 300px">
+            <img [src]="item" alt="">
+          </div>
+        </div>
+        <button NguCarouselNext class="rightRs">></button>
+        <button NguCarouselPrev class="leftRs"><</button>
+        <ul class="myPoint" NguCarouselPoint>
+            <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
+        </ul>
+    </ngu-carousel>
+</div>
+
 <div class="padding-20-0"></div>
 
 <div class="content-center">
@@ -112,16 +128,69 @@
     </div>
 </div>
 
-<ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
-    <div *nguCarouselDef="let item;" class="item">
-      <div class="sub1-main5" style="min-height: 300px">
-        <img [src]="item.img" alt="">
-        <p>{{item.name}}</p>
-      </div>
+<!-- <div style="padding: 40px;"></div>
+<div class="carousel-main">
+    <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
+        <div *nguCarouselDef="let item;" class="item">
+          <div class="sub1-main5" style="max-height: 300px">
+            <img [src]="item" alt="">
+          </div>
+        </div>
+        <button NguCarouselNext class="rightRs">></button>
+        <button NguCarouselPrev class="leftRs"><</button>
+        <ul class="myPoint" NguCarouselPoint>
+            <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
+        </ul>
+    </ngu-carousel>
+</div> -->
+
+<div style="padding: 50px 0px;"></div>
+
+<div class="main-enquiry">
+    <div fxLayout="row" fxLayout.sm="column-reverse" fxLayout.xs="column-reverse">
+        <div>
+            <h1>Enquiry</h1>
+            <form [formGroup]="enquiryFormGroup" (ngSubmit)="onSubmit(enquiryFormGroup.value)">
+                
+                <mat-form-field class="form-element" appearance="outline">
+                    <input matInput placeholder="Name *" formControlName="name">
+                    <mat-error *ngIf="!enquiryFormGroup.controls['name'].valid && enquiryFormGroup.controls['name'].touched">
+                        {{ requiredAlert }}
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="form-element" appearance="outline">
+                    <input matInput placeholder="Mobile Number *" formControlName="mobileNo">
+                    <mat-error *ngIf="!enquiryFormGroup.controls['mobileNo'].valid && enquiryFormGroup.controls['mobileNo'].touched">
+                        {{ requiredAlert }}
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="form-element" appearance="outline">
+                    <input matInput placeholder="Email *" formControlName="email">
+                    <mat-error *ngIf="!enquiryFormGroup.controls['email'].valid && enquiryFormGroup.controls['email'].touched">
+                        {{ requiredAlert }}
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field class="form-element" appearance="outline">
+                    <input matInput placeholder="Event *" formControlName="event">
+                    <mat-error *ngIf="!enquiryFormGroup.controls['event'].valid && enquiryFormGroup.controls['event'].touched">
+                        {{ requiredAlert }}
+                    </mat-error>
+                </mat-form-field>
+    
+                <div>
+                    <button mat-stroked-button type="submit">Submit</button>
+                </div>
+    
+            </form>
+        </div>
+        <div style="padding: 0px 20px;"></div>
+        <div class="image">
+            <img src="assets/enquiry.svg" alt="enquiry">
+        </div>
     </div>
-    <button NguCarouselNext class="rightRs">></button>
-    <button NguCarouselPrev class="leftRs"><</button>
-    <ul class="myPoint" NguCarouselPoint>
-        <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
-    </ul>
-  </ngu-carousel>
+</div>
+
+<div style="padding: 40px 0px;"></div>

@@ -74,11 +74,13 @@ h1,p{
             max-width: 300px;
             object-fit: cover;
             max-height: 300px;
-            box-shadow: 5px 5px 10px rgba(150, 160, 160, 0.6);
+            height: 100%;
+            // box-shadow: 5px 5px 10px rgba(150, 160, 160, 0.6);
         }
         img:hover{
             opacity: 0.8;
-            box-shadow: 10px 10px 10px rgba(150, 160, 160, 0.8);
+            filter: brightness(0.5);
+            // box-shadow: 10px 10px 10px rgba(150, 160, 160, 0.8);
         }
 
     }
@@ -101,6 +103,20 @@ h1,p{
 .side-img{
     width: 100%;
     filter: drop-shadow(1px 2px 3px black);
+}
+.sub1-main5{
+  width: 100%;
+  height: 100%;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.carousel-main{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0% auto;
 }
 
 .blocks{
@@ -309,3 +325,17 @@ h1,p{
     }
   }
   
+  .main-enquiry{
+    max-width: 1200px;
+    width: calc(100% - 20px);
+    margin: 0% auto;
+    padding: 0px 10px;
+  }
+
+  .form-element{
+    width: 100%;
+  }
+
+  .image > img{
+    width: 100%;
+  }

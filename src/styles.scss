@@ -23,3 +23,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background-c
 .padding-0-20{
     padding: 0px 20px;
 }
+
+.mat-dialog-container{
+    box-shadow:none !important;
+    background:transparent !important;
+}
+.mat-dialog-container{
+    padding: 10px !important;
+}
+.cdk-overlay-pane{
+    max-width: 100% !important;
+}

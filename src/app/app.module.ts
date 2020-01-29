@@ -15,7 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GallaryComponent } from './gallary/gallary.component';
 import { GallaryService } from './services/gallary.service';
 import { NguCarouselModule } from '@ngu/carousel';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ImagesComponent } from './images/images.component';
+import { ImageComponent } from './image/image.component';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +29,9 @@ import { NguCarouselModule } from '@ngu/carousel';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    GallaryComponent
+    GallaryComponent,
+    ImagesComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +40,12 @@ import { NguCarouselModule } from '@ngu/carousel';
     FlexLayoutModule,
     DemoMaterialModule,
     ReactiveFormsModule,
-    NguCarouselModule
+    NguCarouselModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.config),
+    AngularFireDatabaseModule
   ],
+  entryComponents:[ImageComponent],
   providers: [GallaryService],
   bootstrap: [AppComponent]
 })

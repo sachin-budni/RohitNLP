@@ -1,5 +1,9 @@
 <div class="gallery-main-div">
     <h1>{{headerName[0]?.name}}</h1>
-
 </div>
 
+<div class="row">
+    <div *ngFor="let images of $images | async" class="column">
+        <img *ngFor="let image of images" [src]="image.download_url" alt="" (click)="openImage(image.download_url)">
+    </div>
+</div>

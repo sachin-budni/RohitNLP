@@ -1,7 +1,8 @@
 .main-footer{
     width: 100%;
     height: auto;
-    background-color: #e3e3e3;
+    background-color: whitesmoke;
+    box-shadow: -2px -6px 6px #ccc8c8;
 }
 .footer{
     width: 100%;
@@ -16,9 +17,21 @@
     padding: 0px 2px;
 }
 pre{
-    font-size: 15px;
+    font-size: 20px;
     font-family: Roboto, Regular;
     padding: 0px 10px;
     margin: 0px;
     line-height: 25px;
+}
+.social-icon{
+    width: 24px;
+    height: 100%;
+}
+.icons{
+    width: 24px;
+    height: 100%;
+    padding: 0px 10px;
+}
+.text-data{
+    font-size: 20px;
 }

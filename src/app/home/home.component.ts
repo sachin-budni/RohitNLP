@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NguCarouselConfig, NguCarousel } from '@ngu/carousel';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GallaryService } from '../services/gallary.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,13 @@ export class HomeComponent implements OnInit {
 
 
   @ViewChild("myCarousel",{static:false}) myCarousel:NguCarousel<any>;
+  enquiryFormGroup:FormGroup;
 
   images = [
     // "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80",
     {
       name:"Birthday Images",
-      img:"https://images.unsplash.com/photo-1476718840318-386693801fbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+      img:"https://images.pexels.com/photos/256737/pexels-photo-256737.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     },
     {
       name:"Marriege Images",
@@ -39,24 +42,48 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  constructor(private cdr:ChangeDetectorRef) {
+  slidesImages = [
+    "https://images.pexels.com/photos/256737/pexels-photo-256737.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    "https://cdn.dnaindia.com/sites/default/files/styles/full/public/2017/12/09/631728-wedding.jpg",
+    "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2019/09/1552561678_i_xLvmDxd_X2.jpg",
+    "https://media.weddingz.in/images/70a49d96af7c16692b3296d2207f2261/marriage-dates-in-april-2019.jpg",
+    "https://resources.stuff.co.nz/content/dam/images/1/c/w/t/l/z/image.related.StuffLandscapeSixteenByNine.710x400.1f92cb.png/1478483293501.jpg",
+    "https://static.kannada.news18.com/optimize/oZDyeiF7spBiDGZ0TMegXfVo1OM=/0x0/static.kannada.news18.com/kannada/uploads/2019/10/dhruva-sarja-prerana-2.jpg"
+  ]
+
+  constructor(private cdr:ChangeDetectorRef,private fb:FormBuilder,private gallaryService:GallaryService) {
   }
 
   data:any;
   ngOnInit() {
-    this.data = this.images;
+
+    this.enquiryFormGroup = this.fb.group({
+      name:["",Validators.required],
+      mobileNo:["",Validators.required],
+      email:[""],
+      event:["",Validators.required],
+    });
+
+    this.data = this.slidesImages;
     this.cdr.detectChanges();
   }
 
 
 
   carouselConfig: NguCarouselConfig = {
-    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-    // load: this.reviewData.length,
+    grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
+    // load: this.reviewData.length
+    slide:3,
     interval: {timing: 4000, initialDelay: 1000},
     loop: true,
     touch: true,
-    velocity: 0.2
+    velocity: 0.2,
+    animation:"lazy",
+    
+  }
+
+  onSubmit(value){
+    this.gallaryService.enquiryForm(value)
   }
 
 }

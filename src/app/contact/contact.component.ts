@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { GallaryService } from '../services/gallary.service';
 
 export class Contact{
   name:string;
@@ -17,7 +18,7 @@ export class ContactComponent implements OnInit {
   requiredAlert = "Required this field";
   contactFormGroup:FormGroup;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private gallaryService:GallaryService) {
     this.contactFormGroup = this.fb.group({
       name:["",Validators.required],
       email:["",[Validators.required,Validators.email]],
@@ -30,7 +31,7 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(data:Contact){
-    console.log(data)
+    this.gallaryService.contactForm(data)
   }
 
 }
