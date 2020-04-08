@@ -8,17 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   sets=[
-    "Includes 30,500 square feet with 35' ceiling height (with 20 permanent room sets)",
-    "Extensive Prop & Decor selection",
-    "Multiple digital camera set-ups including video",
-    "Set building shop (as well as a large inventory of over 200 existing set components)",
-    "24’ cyclorama (also known as a 'cove'--painted white)",
-    "Working Kitchen for food shoots",
-    "Client areas (Wi-Fi throughout)",
-    "Pressing area (for prepping soft goods/linens)",
-    "Merchandise storage areas",
-    "On-Site Parking",
-    "Loading Docks for receiving"
+    {
+      head:"WHERE ARE YOU GUYS BASED OUT OF, DO YOU TRAVEL TO DIFFERENT LOCATIONS FOR WEDDINGS?",
+      sub:["WE ARE BASED IN BANGALORE AND WE TRAVEL ACROSS THE GLOBE FOR SHOOTS."]
+    },{
+      head:"WHAT ARE THE VARIOUS SERVICES YOU OFFER?",
+      sub:[
+        "CANDID PHOTOGRAPHY",
+        "TRADITIONAL PHOTOGRAPHY",
+        "TRADITIONAL VIDEOGRAPHY"
+      ]
+    }
   ]
 
   constructor() { }
