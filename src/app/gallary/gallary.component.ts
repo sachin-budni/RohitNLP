@@ -4,6 +4,7 @@ import { GallaryService } from '../services/gallary.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageComponent } from '../image/image.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gallary',
@@ -12,33 +13,39 @@ import { ImageComponent } from '../image/image.component';
 })
 export class GallaryComponent implements OnInit {
 
-  paramRoutes = ["weddingEvent","birthdayEvent","preweddingEvent","postweddingEvent","candidePic","wildPhotography"];
 
-  headerName = {};
-  $images:Observable<any>;
-  constructor(private routes:ActivatedRoute,private router:Router,
-              private galleryService:GallaryService,private dialog:MatDialog) { }
+  headerName: string;
+  $images: Observable<any>;
+  constructor(private routes: ActivatedRoute, private router: Router,
+              private galleryService: GallaryService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.routes.params.subscribe(d=>{
-      if(this.paramRoutes.includes(d.id)){
-        this.headerName = this.galleryService.getRouteNames.filter(d1=>d1.path == d.id);
-      }else{
-        this.router.navigate(["gallery","weddingEvent"])
-      }
-    })
-    this.$images = this.galleryService.getAllImages;
+    this.routes.params.subscribe(d => {
+      this.headerName = d.id.replace('-', ' ');
+      this.$images = this.galleryService.images(d.id).pipe(
+        map((image) => {
+          return image;
+        })
+      );
+      // .subscribe(di => {
+      //   if (di.length !== 0) {
+      //   } else {
+      //     this.router.navigate(['']);
+      //   }
+      // });
+    });
+    // this.$images = this.galleryService.getAllImages;
   }
 
-  openImage(img){
-    let dialogRef = this.dialog.open(ImageComponent,{
-      data:img,
-    })
+  openImage(img) {
+    const dialogRef = this.dialog.open(ImageComponent, {
+      data: img,
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+
     });
   }
 
-  
+
 }

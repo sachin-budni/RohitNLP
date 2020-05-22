@@ -10,7 +10,7 @@ import { GallaryService } from '../services/gallary.service';
 })
 export class HomeComponent implements OnInit {
 
-
+  requiredAlert:string = "Field is required"
   @ViewChild("myCarousel",{static:false}) myCarousel:NguCarousel<any>;
   enquiryFormGroup:FormGroup;
 
@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit {
     {
       name:"Marriege Images",
       img:"https://i.pinimg.com/originals/fa/92/47/fa92471b04aa2f0b27bf682368cea756.jpg"
-    },
-    {
-      name:"pre-wedding Images",
-      img:"https://wallpapersinn.com/wp-content/uploads/2019/05/Black-Background-HD-Wallpaper-147.jpeg"
     },
     {
       name:"jdfkds fksdjfkds",
@@ -83,7 +79,8 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(value){
-    this.gallaryService.enquiryForm(value)
+    this.gallaryService.enquiryForm(value);
+    this.enquiryFormGroup.reset();
   }
 
 }

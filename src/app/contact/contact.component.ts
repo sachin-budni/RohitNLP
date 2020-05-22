@@ -31,7 +31,8 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(data:Contact){
-    this.gallaryService.contactForm(data)
+    this.gallaryService.contactForm(data);
+    this.contactFormGroup.reset();
   }
 
 }

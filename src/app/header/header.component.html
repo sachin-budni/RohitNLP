@@ -25,7 +25,9 @@
             </div>
             
             <mat-menu #menu1="matMenu">
-                <button mat-menu-item *ngFor="let route of routesNames" [routerLink]="['gallery',route.path]">{{route.name}}</button>
+                <div *ngFor="let route of routesNames | async">
+                    <button mat-menu-item [routerLink]="['gallery',route.url]">{{route.name}}</button>
+                </div>
             </mat-menu>
             <div  fxShow.sm="true" fxShow.xs="true" fxHide>
                 <button mat-icon-button aria-label="Example icon-button with a heart icon"  [matMenuTriggerFor]="menu">
@@ -39,7 +41,7 @@
                     <button mat-menu-item>map</button>
                 </mat-menu>
                 <mat-menu #gallery="matMenu">
-                    <button mat-menu-item *ngFor="let route of routesNames" [routerLink]="['gallery',route.path]">{{route.name}}</button>
+                    <button mat-menu-item *ngFor="let route of routesNames | async" [routerLink]="['gallery',route.url]">{{route.name}}</button>
                 </mat-menu>
             </div>
             <div class="extra-padding-10"></div>

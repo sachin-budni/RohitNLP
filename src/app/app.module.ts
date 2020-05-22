@@ -11,16 +11,22 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoMaterialModule } from './material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GallaryComponent } from './gallary/gallary.component';
 import { GallaryService } from './services/gallary.service';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { ImagesComponent } from './images/images.component';
 import { ImageComponent } from './image/image.component';
+// tslint:disable-next-line: quotemark
 import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from 'src/environments/environment';
+import { AdminComponent } from './admin/admin.component';
+import { AuthService } from './services/auth.service';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,9 @@ import { environment } from 'src/environments/environment';
     ContactComponent,
     GallaryComponent,
     ImagesComponent,
-    ImageComponent
+    ImageComponent,
+    AdminComponent,
+    UploadTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +51,13 @@ import { environment } from 'src/environments/environment';
     NguCarouselModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    FormsModule
   ],
-  entryComponents:[ImageComponent],
-  providers: [GallaryService],
+  entryComponents: [ImageComponent],
+  providers: [GallaryService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

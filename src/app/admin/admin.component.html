@@ -1,0 +1,32 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="extra-space">
+    <mat-form-field appearance="fill">
+        <mat-label>Input</mat-label>
+        <input matInput [(ngModel)]='eventName'>
+    </mat-form-field>
+    
+    <button mat-raised-button color='primary' type="button" (click)="addEventName()">Submit</button>
+    
+    <div *ngFor="let event of events | async" class="mat-form-field space">
+      <mat-card fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{event.name}}</span>
+        <button mat-icon-button>
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Event Name</mat-label>
+      <mat-select [(ngModel)]="selectedEventName">
+        <mat-option *ngFor="let event of allEventName | async" [value]="event.url">
+          {{event.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <input type="file" (change)="uploadImages($event)" multiple>
+
+    <div *ngFor='let file of files' class="upload-task">
+        <app-upload-task [file]="file" [name]="selectedEventName"></app-upload-task>
+    </div>
+</div>
