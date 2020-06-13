@@ -27,6 +27,8 @@ import { environment } from 'src/environments/environment';
 import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './services/auth.service';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './services/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
     ImagesComponent,
     ImageComponent,
     AdminComponent,
-    UploadTaskComponent
+    UploadTaskComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
     FormsModule
   ],
   entryComponents: [ImageComponent],
-  providers: [GallaryService, AuthService],
+  providers: [GallaryService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { GallaryService } from '../services/gallary.service';
 import { map } from 'rxjs/operators';
 import { DatabaseSnapshot, SnapshotAction } from 'angularfire2/database';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -17,7 +18,9 @@ export class AdminComponent implements OnInit {
   files: FileList;
   selectedEventName: string;
   events: Observable<any[]>;
-  constructor(private authService: AuthService, private gallary: GallaryService) { }
+  constructor(private authService: AuthService,
+              private gallary: GallaryService,
+              private router: Router) { }
 
   ngOnInit() {
     this.allEventName = this.authService.allEventNames;
@@ -32,8 +35,10 @@ export class AdminComponent implements OnInit {
   }
 
   addEventName() {
-    this.authService.eventName(this.eventName);
-    this.eventName  = '';
+    if (this.eventName.length !== 0 && !(this.eventName.startsWith(' '))) {
+      this.authService.eventName(this.eventName);
+      this.eventName  = '';
+    }
   }
 
   uploadImages(event) {
@@ -43,6 +48,15 @@ export class AdminComponent implements OnInit {
     } else {
       alert('Please Select event name from above dropdown');
     }
+  }
+
+  remove(key: string, eventName: string) {
+    this.gallary.removeEvent(key, eventName);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
 }

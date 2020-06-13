@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="main-card">
+        <div class="both">
+            <div class="qoute">
+                <h1>“On memory lane pictures are used to travel back in time.”</h1>
+            </div>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title class="hello">Hi NLP...</mat-card-title>
+                    <!-- <mat-card-subtitle>Don't have an account? <a href="#" routerLink="/register">Sign up</a></mat-card-subtitle> -->
+                </mat-card-header>
+                <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit(loginFormGroup.value)" class="form">
+                    <label>Email *</label>
+                    <mat-form-field class="form-element" appearance="outline">
+                        <input matInput placeholder="Email" name="email" formControlName="email">
+                        <mat-error *ngIf="!loginFormGroup.controls['email'].valid && loginFormGroup.controls['email'].touched">
+                        {{ getErrorEmail('email') }}
+                        </mat-error>
+                    </mat-form-field>
+                    <label>Password *</label>
+                    <mat-form-field class="form-element" appearance="outline">
+                        <input matInput placeholder="Password" name="password" type="password" formControlName="password">
+                        <mat-error *ngIf="!loginFormGroup.controls['password'].valid && loginFormGroup.controls['password'].touched">
+                        {{ getErrorPassword() }}
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="forget-password">
+                        <a (click)="resetPassword()">Forget Password</a>
+                    </div>
+                    <div class="form-element">
+                        <button mat-raised-button type="submit" class="button" [disabled]="!loginFormGroup.valid">Login</button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

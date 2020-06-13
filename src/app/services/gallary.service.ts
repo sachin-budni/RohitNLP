@@ -8,7 +8,9 @@ import { AngularFireStorage } from 'angularfire2/storage';
 export class GallaryService {
 
 
-  constructor(private http: HttpClient, private afDB: AngularFireDatabase, private storage: AngularFireStorage) { }
+  constructor(private http: HttpClient,
+              private afDB: AngularFireDatabase,
+              private storage: AngularFireStorage) { }
 
   get getRouteNames() {
     return this.afDB.list('event').valueChanges();
@@ -64,5 +66,20 @@ export class GallaryService {
 
   addNameOfImage(path, eventName, paths) {
     this.afDB.list(`${eventName}`).push({url: path, paths});
+  }
+
+  getEventName(eventName: string) {
+    return eventName.replace(' ', '-');
+  }
+
+  removeEvent(key: string, eventName: string) {
+    this.afDB.object(`event/${key}`).remove();
+    const name = this.getEventName(eventName);
+    this.afDB.list(`${name}`).remove();
+    this.storage.storage.ref(`${name}/`).listAll().then(d => {
+      d.items.forEach((item) => {
+        this.storage.storage.ref(`${name}/${item.name}`).delete();
+      });
+    });
   }
 }
