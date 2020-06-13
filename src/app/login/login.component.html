@@ -13,17 +13,14 @@
                     <label>Email *</label>
                     <mat-form-field class="form-element" appearance="outline">
                         <input matInput placeholder="Email" name="email" formControlName="email">
-                        <mat-error *ngIf="!loginFormGroup.controls['email'].valid && loginFormGroup.controls['email'].touched">
-                        {{ getErrorEmail('email') }}
-                        </mat-error>
                     </mat-form-field>
                     <label>Password *</label>
                     <mat-form-field class="form-element" appearance="outline">
                         <input matInput placeholder="Password" name="password" type="password" formControlName="password">
-                        <mat-error *ngIf="!loginFormGroup.controls['password'].valid && loginFormGroup.controls['password'].touched">
-                        {{ getErrorPassword() }}
-                        </mat-error>
                     </mat-form-field>
+                    <mat-error>
+                        {{ error }}
+                    </mat-error>
                     <div class="forget-password">
                         <a (click)="resetPassword()">Forget Password</a>
                     </div>

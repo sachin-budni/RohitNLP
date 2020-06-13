@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  error: string;
   loginFormGroup: FormGroup;
   constructor(private fb: FormBuilder,
               private auth: AuthService,
@@ -25,6 +26,9 @@ export class LoginComponent implements OnInit {
   onSubmit(value) {
     this.auth.login(value).then(d => {
       this.router.navigate(['/admin']);
+    }).catch(err => {
+      console.log(err);
+      this.error = err.code.replace('auth/', '');
     });
   }
 
