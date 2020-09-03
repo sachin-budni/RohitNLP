@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GallaryService } from '../services/gallary.service';
 
-export class Contact{
-  name:string;
-  email:string;
-  subject:string;
-  message:string;
+export class Contact {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 @Component({
@@ -15,22 +15,23 @@ export class Contact{
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  requiredAlert = "Required this field";
-  contactFormGroup:FormGroup;
+  requiredAlert = 'Required this field';
+  contactFormGroup: FormGroup;
 
-  constructor(private fb:FormBuilder,private gallaryService:GallaryService) {
+  constructor(private fb: FormBuilder, private gallaryService: GallaryService) {
     this.contactFormGroup = this.fb.group({
-      name:["",Validators.required],
-      email:["",[Validators.required,Validators.email]],
-      subject:["",Validators.required],
-      message:[""]
-    })
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobileNumber: ['', [Validators.required]],
+      subject: ['', Validators.required],
+      message: ['']
+    });
   }
 
   ngOnInit() {
   }
 
-  onSubmit(data:Contact){
+  onSubmit(data: Contact) {
     this.gallaryService.contactForm(data);
     this.contactFormGroup.reset();
   }

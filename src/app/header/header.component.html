@@ -14,7 +14,7 @@
                 <button [matMenuTriggerFor]="menu1" mat-stroked-button class="gallaries">
                     <div class="gallary-button">
                         <span>
-                            galleries 
+                            Galleries 
                         </span>
                         <mat-icon>
                             expand_more
@@ -22,6 +22,10 @@
                     </div>
                 </button>
                 <button [routerLink]="['contact']" mat-stroked-button routerLinkActive="active">contact</button>
+                <ng-container *ngIf="adminAuth">
+                    <button [routerLink]="['admin']" mat-stroked-button routerLinkActive="active">Admin</button>
+                </ng-container>
+                
             </div>
             
             <mat-menu #menu1="matMenu">
@@ -36,9 +40,8 @@
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</button>
                     <button mat-menu-item [routerLink]="['aboutus']" routerLinkActive="active">About</button>
-                    <button mat-menu-item [matMenuTriggerFor]="gallery">galleries</button>
-                    <button mat-menu-item [routerLink]="['contact']" routerLinkActive="active">contact</button>
-                    <button mat-menu-item>map</button>
+                    <button mat-menu-item [matMenuTriggerFor]="gallery">Galleries</button>
+                    <button mat-menu-item [routerLink]="['contact']" routerLinkActive="active">Contact</button>
                 </mat-menu>
                 <mat-menu #gallery="matMenu">
                     <button mat-menu-item *ngFor="let route of routesNames | async" [routerLink]="['gallery',route.url]">{{route.name}}</button>

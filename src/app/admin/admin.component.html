@@ -1,12 +1,18 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="extra-space">
-  <div>
-    <button mat-raised-button (click)="logout()">
-      Logout <mat-icon>power_settings_new</mat-icon>
+  <div style="padding: 10px;" fxLayoutGap="10px">
+    <button mat-raised-button routerLink="contact">
+      Contact
+    </button>
+    <button mat-raised-button routerLink="enquiry">
+      Enquiry
+    </button>
+    <button mat-raised-button routerLink="home">
+      Home
     </button>
   </div>
   <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput [(ngModel)]='eventName'>
+    <mat-label>Add New Event</mat-label>
+    <input matInput [(ngModel)]='eventName' placeholder="New Event Name">
   </mat-form-field>
 
   <button mat-raised-button color='primary' type="button" (click)="addEventName()">Submit</button>
@@ -33,5 +39,10 @@
 
   <div *ngFor='let file of files' class="upload-task">
     <app-upload-task [file]="file" [name]="selectedEventName"></app-upload-task>
+  </div>
+  <div style="padding: 10px;">
+    <button mat-raised-button (click)="logout()">
+      Logout <mat-icon>power_settings_new</mat-icon>
+    </button>
   </div>
 </div>

@@ -1,0 +1,63 @@
+<mat-card class="main">
+    <div class="content-card" fxLayout="row" style="width: 100%;" fxLayoutGap="50px">
+        <form [formGroup]="contentForm" (ngSubmit)="onSubmit(contentForm.value)" fxLayout="column" style="width: 100%;">
+        
+            <mat-form-field class="form-element" appearance="fill">
+                <input matInput placeholder="Content Header *" formControlName="header">
+                <mat-error *ngIf="!contentForm.controls['header'].valid && contentForm.controls['header'].touched">
+                    {{ requiredAlert }}
+                </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="form-element" appearance="fill">
+                <textarea matInput matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=5 placeholder="Content *" formControlName="content"></textarea>
+                <!-- <input matInput placeholder="Content *" formControlName="header"> -->
+                <mat-error *ngIf="!contentForm.controls['content'].valid && contentForm.controls['content'].touched">
+                    {{ requiredAlert }}
+                </mat-error>
+            </mat-form-field>
+        
+            <div fxLayout="row" fxFlexAlign="center">
+                <input type="file" (change)="onChange($event)">
+                <ng-container  *ngIf="!contentForm.controls['img'].valid && contentForm.controls['img'].touched">
+                    {{"upload Image"}}
+                </ng-container>    
+                <ng-container *ngIf="uploadedImg">
+                    <img [src]="uploadedImg" alt="" class="uploaded-img">
+                </ng-container>
+            </div>
+            <ng-container *ngIf='perc | async as p'>
+                <mat-progress-bar
+                    class="example-margin"
+                    width="100%"
+                    color="primary"
+                    mode="determinate"
+                    [value]="p">
+                </mat-progress-bar>
+            </ng-container>
+            
+            
+            <div fxLayout="row" fxFlexAlign="center" style="padding: 20px;">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+        </form>
+        <mat-card style="width: 100%; max-width: 500px;">
+            <mat-nav-list>
+                <mat-list-item *ngFor="let item of $content | async">
+                    <img matListAvatar [src]="item.img" alt="..."> 
+                    <h3 matLine> {{item.header}} </h3>
+                    <p matLine>
+                      <span class="demo-2" [matTooltip]="item.content"> -- {{item.content}} </span>
+                    </p>
+                   <button mat-icon-button (click)="edit(item)">
+                      <mat-icon>edit</mat-icon>
+                   </button>
+                   <button mat-icon-button (click)="delete(item)">
+                      <mat-icon>delete</mat-icon>
+                   </button>
+                   <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-nav-list>
+        </mat-card>
+    </div>
+</mat-card>

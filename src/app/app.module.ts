@@ -24,11 +24,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from 'src/environments/environment';
-import { AdminComponent } from './admin/admin.component';
+// import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './services/auth.service';
-import { UploadTaskComponent } from './upload-task/upload-task.component';
+// import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
+// import { EnquiryComponent } from './enquiry/enquiry.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +41,10 @@ import { AuthGuard } from './services/auth.guard';
     GallaryComponent,
     ImagesComponent,
     ImageComponent,
-    AdminComponent,
-    UploadTaskComponent,
-    LoginComponent
+    // AdminComponent,
+    // UploadTaskComponent,
+    LoginComponent,
+    // EnquiryComponent
   ],
   imports: [
     BrowserModule,

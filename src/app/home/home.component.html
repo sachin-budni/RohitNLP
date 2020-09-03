@@ -15,43 +15,58 @@
 <div class="padding-20-0"></div>
 
 <div class="blocks">
-    <div class="first-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column">
-        <div class="img-first" >
-            <img class="side-img" src="assets/photo_1.svg" alt="">
+    <ng-container *ngFor="let content of $content | async; let i=index; let even = even; let odd = odd">
+
+        <div class="first-block"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.sm="column"
+            fxLayout.xs="column"
+            *ngIf="odd"
+        >
+            <div class="img-first" >
+                <img class="side-img" [src]="content?.img" alt="">
+            </div>
+            <div class="text-first" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h1 class="head">
+                    <!-- <span class="blur-text">{{ i }}.</span> -->
+                    {{content.header | uppercase}}
+                </h1>
+                <p>
+                    {{content.content}}
+                </p>
+            </div>
         </div>
-        <div class="text-first" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <h1 class="head">
-                <span class="blur-text">01.</span>
-                Natural light photography(NLP)
-            </h1>
-            <p>
-                Capturing a magical moments called photography. We know you reserve "BEST MEMORIES". Our complete responsibilities is to capture your magical moments in the mode of photos as memories and deliver to you.
-
-            </p>
-        </div>
-    </div>
-
-    <div class="padding-20-0"></div>
-
     
-    <div class="second-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column-reverse" fxLayout.xs="column-reverse">
-        <div class="text-second" fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <h1 class="head">
-                <span class="blur-text">02.</span>
-                NEETA SHANKAR PHOTOGRAPHY PRIVATE LIMITED
-            </h1>
-            <p>
-                A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
-            </p>
+        <div class="padding-20-0"></div>
+    
+        
+        <div class="second-block"
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayout.sm="column-reverse"
+            fxLayout.xs="column-reverse"
+            *ngIf="even"
+        >
+            <div class="text-second" fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h1 class="head">
+                    <!-- <span class="blur-text">{{i}}.</span> -->
+                    {{content.header | uppercase}}
+                </h1>
+                <p>
+                    {{content.content}}
+                </p>
+            </div>
+            <div class="img-second">
+                <img class="side-img" [src]="content?.img" alt="">
+            </div>
         </div>
-        <div class="img-second">
-            <img class="side-img" src="assets/camera.svg" alt="">
-        </div>
-    </div>
+        <div class="padding-20-0"></div>
+    </ng-container>
+    
 
-    <div class="padding-20-0"></div>
 
-    <div class="first-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column">
+    <!-- <div class="first-block" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.sm="column" fxLayout.xs="column">
         <div class="img-first" >
             <img class="side-img" src="assets/selfi.svg" alt="">
         </div>
@@ -64,59 +79,9 @@
                 A photograph is, in reality, light frozen in time. So, it is hardly surprising that you want the best wedding photographers to preserve those timeless memories for you. Our tenacity towards delivering the top "Wedding Photography and Cinematography" experience to our clients makes us the perfect choice to treasure the magical moments of your big day.
             </p>
         </div>
-    </div>
+    </div> -->
 
 </div>
-
-<div style="padding: 40px;"></div>
-<div class="carousel-main">
-    <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
-        <div *nguCarouselDef="let item;" class="item">
-          <div class="sub1-main5" style="max-height: 300px">
-            <img [src]="item" alt="">
-          </div>
-        </div>
-        <button NguCarouselNext class="rightRs">></button>
-        <button NguCarouselPrev class="leftRs"><</button>
-        <ul class="myPoint" NguCarouselPoint>
-            <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
-        </ul>
-    </ngu-carousel>
-</div>
-
-<div class="padding-20-0"></div>
-
-<div class="content-center">
-    <div fxLayout="column" fxLayoutAlign="space-between center">
-        <h1>Galleries</h1>
-        <div class="main-card">
-            <div class="cards">
-                <div *ngFor="let image of images" class="card">
-                    <img [src]="image.img" alt="">
-                    <div class="details">
-                        <h4>{{image.name}}</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- <div style="padding: 40px;"></div>
-<div class="carousel-main">
-    <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
-        <div *nguCarouselDef="let item;" class="item">
-          <div class="sub1-main5" style="max-height: 300px">
-            <img [src]="item" alt="">
-          </div>
-        </div>
-        <button NguCarouselNext class="rightRs">></button>
-        <button NguCarouselPrev class="leftRs"><</button>
-        <ul class="myPoint" NguCarouselPoint>
-            <li *ngFor="let j of myCarousel?.pointNumbers; let j = index" [class.active]="j==myCarousel?.activePoint" (click)="myCarousel?.moveTo(j)"></li>
-        </ul>
-    </ngu-carousel>
-</div> -->
 
 <div style="padding: 50px 0px;"></div>
 
@@ -134,14 +99,14 @@
                 </mat-form-field>
     
                 <mat-form-field class="form-element" appearance="outline">
-                    <input matInput placeholder="Mobile Number *" formControlName="mobileNo">
+                    <input matInput type="number" placeholder="Mobile Number *" formControlName="mobileNo">
                     <mat-error *ngIf="!enquiryFormGroup.controls['mobileNo'].valid && enquiryFormGroup.controls['mobileNo'].touched">
                         {{ requiredAlert }}
                     </mat-error>
                 </mat-form-field>
     
                 <mat-form-field class="form-element" appearance="outline">
-                    <input matInput placeholder="Email *" formControlName="email">
+                    <input matInput type="email" placeholder="Email *" formControlName="email">
                     <mat-error *ngIf="!enquiryFormGroup.controls['email'].valid && enquiryFormGroup.controls['email'].touched">
                         {{ requiredAlert }}
                     </mat-error>

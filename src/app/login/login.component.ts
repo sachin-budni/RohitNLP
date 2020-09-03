@@ -32,4 +32,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  resetPassword(email: string) {
+    if (!email.indexOf(' ') && !email.indexOf('@')) {
+      this.auth.resetPassword(email);
+    } else {
+      this.error = 'email is requied';
+    }
+  }
+
 }

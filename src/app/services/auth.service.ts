@@ -28,6 +28,16 @@ export class AuthService {
     return this.database.list('event').push({name, url});
   }
 
+  updateEvent(key: string, name: string) {
+    const url = name.replace(' ', '-');
+    this.updateFolderPath(name);
+    return this.database.object(`event/${key}`).set({name, url});
+  }
+
+  updateFolderPath(name: string) {
+    // this.storage.storage.ref(name).parent
+  }
+
   login(value) {
     return this.angularAuth.auth.signInWithEmailAndPassword(value.email, value.password);
   }
@@ -46,5 +56,13 @@ export class AuthService {
         }
       });
     });
+  }
+
+  get currentUser() {
+    return this.angularAuth.auth.currentUser;
+  }
+
+  resetPassword(email) {
+    return this.angularAuth.auth.sendPasswordResetEmail(email);
   }
 }

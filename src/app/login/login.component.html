@@ -22,7 +22,7 @@
                         {{ error }}
                     </mat-error>
                     <div class="forget-password">
-                        <a (click)="resetPassword()">Forget Password</a>
+                        <a (click)="resetPassword(loginFormGroup.value.email)">Forget Password</a>
                     </div>
                     <div class="form-element">
                         <button mat-raised-button type="submit" class="button" [disabled]="!loginFormGroup.valid">Login</button>

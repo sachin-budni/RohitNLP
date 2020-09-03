@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class GallaryService {
@@ -24,14 +25,6 @@ export class GallaryService {
     );
   }
 
-  // get getAllImages() {
-  //   return this.http.get('https://picsum.photos/v2/list?page=1&limit=40').pipe(
-  //     map((img: []) => {
-  //       // return img;
-  //       return this.chunkArray(img, img.length / 4);
-  //     })
-  //   );
-  // }
   // tslint:disable-next-line: variable-name
   chunkArray(myArray: string | any[], chunk_size: number) {
     let index = 0;
@@ -50,6 +43,14 @@ export class GallaryService {
 
   contactForm(value) {
     return this.afDB.list('contact').push(value);
+  }
+
+  get contact(): Observable<any> {
+    return this.afDB.list('contact').valueChanges();
+  }
+
+  get enquiry(): Observable<any> {
+    return this.afDB.list('enquiry').valueChanges();
   }
 
   enquiryForm(value) {
@@ -81,5 +82,30 @@ export class GallaryService {
         this.storage.storage.ref(`${name}/${item.name}`).delete();
       });
     });
+  }
+  get getContent() {
+    return this.afDB.list('home-content').snapshotChanges().pipe(
+      map(v => v.map(v1 => {
+        const payload = v1.payload.val();
+        return { key: v1.key, ...payload as any };
+      }))
+    );
+  }
+
+  contentForm(value) {
+    return this.afDB.list('home-content').push(value);
+  }
+
+  editContentForm(value, key) {
+    return this.afDB.object('home-content/' + key + '').set(value);
+  }
+
+  deleteContentForm(key) {
+    return this.afDB.object('home-content/' + key + '').remove();
+  }
+
+  uploadContentImg(file: File): any {
+    // const ref = this.ref(file.name);
+    return this.storage.upload(file.name, file);
   }
 }
