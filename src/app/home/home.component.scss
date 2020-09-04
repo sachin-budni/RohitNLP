@@ -32,6 +32,13 @@ h1,p{
     }
 }
 
+@media only screen and (max-width: 600px) {
+  .header-center{
+    text-align: center;
+  }
+}
+
+
 .main-card{
     width: 100%;
     .cards{
@@ -101,8 +108,9 @@ h1,p{
     }
 }
 .side-img{
-    width: 100%;
-    filter: drop-shadow(1px 2px 3px black);
+    width: calc(100% - 40px);
+    filter: drop-shadow(1px 2px 3px rgb(192, 189, 189));
+    margin: 20px;
 }
 .sub1-main5{
   width: 100%;

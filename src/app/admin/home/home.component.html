@@ -39,6 +39,7 @@
             
             <div fxLayout="row" fxFlexAlign="center" style="padding: 20px;">
                 <button mat-raised-button color="primary" type="submit">Submit</button>
+                <button mat-raised-button color="primary" type="button" *ngIf="editKey" (click)="exit()">Exit from Edit</button>
             </div>
         </form>
         <mat-card style="width: 100%; max-width: 500px;">

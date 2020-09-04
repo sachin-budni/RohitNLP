@@ -70,10 +70,19 @@ export class HomeComponent implements OnInit {
     this.contentForm.reset();
   }
 
+  exit() {
+    this.editKey = undefined;
+    this.contentForm.reset();
+  }
+
   edit(value) {
     this.editKey = value.key;
-    delete value.key;
-    this.contentForm.setValue(value);
+    const obj = {
+      content: value.content,
+      header: value.header,
+      img : value.img
+    }
+    this.contentForm.setValue(obj);
   }
 
   delete(key) {
